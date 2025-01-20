@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35617.110 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chrison.Extensions", "Chrison.Extensions\Chrison.Extensions.csproj", "{30E87268-DD46-4019-81B0-2C3AD06CF86C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{30E87268-DD46-4019-81B0-2C3AD06CF86C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30E87268-DD46-4019-81B0-2C3AD06CF86C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30E87268-DD46-4019-81B0-2C3AD06CF86C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30E87268-DD46-4019-81B0-2C3AD06CF86C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5817246D-D767-4268-B8DA-58E4CE12B929}
+	EndGlobalSection
+EndGlobal
