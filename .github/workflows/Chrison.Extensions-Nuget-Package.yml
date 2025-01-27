@@ -2,8 +2,9 @@ name: Publish Chrison .NET Extensions on NuGet
  
 on:
   push:
-    branches: [ master ]
-    paths: [ 'Chrison.Extensions/**' ]
+    paths: ['Chrison.Extensions/**']
+  pull_request:
+    paths: ['Chrison.Extensions/**']
 
 env:
   NET_VERSION: '9.x'

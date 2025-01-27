@@ -2,8 +2,9 @@ name: Publish Chrison .NET Validators on NuGet
  
 on:
   push:
-    branches: [ master ]
-    paths: [ 'Chrison.Validators/**' ]
+    paths: ['Chrison.Validators/**']
+  pull_request:
+    paths: ['Chrison.Validators/**']
 
 env:
   NET_VERSION: '9.x'
