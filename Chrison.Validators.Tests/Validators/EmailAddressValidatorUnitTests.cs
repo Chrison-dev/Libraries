@@ -22,13 +22,15 @@ public class EmailAddressValidatorUnitTests
     //[InlineData("user@exam_ple.com", false)] // TODO: Fix this
     [InlineData("", false)]
     [InlineData(null, false)]
-    public void IsValid_ShouldValidateEmailAddresses(string emailAddress, bool expected)
+    public void IsValid_ShouldValidateEmailAddresses(string? emailAddress, bool expected)
     {
         // Arrange
         var _validator = new EmailAddressValidator();
 
         // Act
+#pragma warning disable CS8604 // Possible null reference argument.
         var result = _validator.IsValid(emailAddress);
+#pragma warning restore CS8604 // Possible null reference argument.
 
         // Assert
         result.ShouldBe(expected, $"{emailAddress}");
