@@ -28,9 +28,7 @@ public class EmailAddressValidatorUnitTests
         var _validator = new EmailAddressValidator();
 
         // Act
-#pragma warning disable CS8604 // Possible null reference argument.
-        var result = _validator.IsValid(emailAddress);
-#pragma warning restore CS8604 // Possible null reference argument.
+        var result = _validator.IsValid($"{emailAddress}");
 
         // Assert
         result.ShouldBe(expected, $"{emailAddress}");
