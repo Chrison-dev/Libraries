@@ -5,6 +5,7 @@ on:
     paths: ['Chrison.Validators/**']
   pull_request:
     paths: ['Chrison.Validators/**']
+  workflow_dispatch:
 
 env:
   NET_VERSION: '9.x'

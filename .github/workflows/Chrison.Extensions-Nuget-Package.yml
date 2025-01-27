@@ -5,6 +5,7 @@ on:
     paths: ['Chrison.Extensions/**']
   pull_request:
     paths: ['Chrison.Extensions/**']
+  workflow_dispatch:
 
 env:
   NET_VERSION: '9.x'
