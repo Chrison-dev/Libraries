@@ -4,7 +4,6 @@ on:
   push:
     branches: [ master ]
     paths: [ 'Chrison.Validators/**' ]
-  workflow_dispatch:
 
 env:
   NET_VERSION: '9.x'

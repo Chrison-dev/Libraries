@@ -4,7 +4,6 @@ on:
   push:
     branches: [ master ]
     paths: [ 'Chrison.Extensions/**' ]
-  workflow_dispatch:
 
 env:
   NET_VERSION: '9.x'
