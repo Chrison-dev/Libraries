@@ -2,9 +2,9 @@ name: Code Coverage Chrison.Validators
 
 on:
   push:
-    paths: ['Chrison.Validators/**']
+    paths: ['Chrison.Validators/**','Chrison.Validators.Tests/**']
   pull_request:
-    paths: ['Chrison.Validators/**']
+    paths: ['Chrison.Validators/**','Chrison.Validators.Tests/**']
   workflow_dispatch:
 
 env:
