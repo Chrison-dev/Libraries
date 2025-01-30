@@ -2,7 +2,7 @@ name: Publish Chrison .NET Extensions on NuGet
  
 on:
   push:
-    paths: ['Chrison.Extensions/**']
+    paths: ['Chrison.Extensions/**', '.github/workflows/Chrison.Extensions-Nuget-Package.yml']
   pull_request:
     paths: ['Chrison.Extensions/**']
   workflow_dispatch:
@@ -17,6 +17,9 @@ jobs:
   publish:
     name: Publish on NuGet
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: write  # Add permissions to create a github release
 
     steps:
     - name: Checkout
