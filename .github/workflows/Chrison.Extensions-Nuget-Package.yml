@@ -2,7 +2,7 @@ name: Publish Chrison .NET Extensions on NuGet
  
 on:
   push:
-    paths: ['Chrison.Extensions/**', '.github/workflows/Chrison.Extensions-Nuget-Package.yml']
+    paths: ['Chrison.Extensions/**']
   pull_request:
     paths: ['Chrison.Extensions/**']
   workflow_dispatch:
@@ -12,6 +12,8 @@ env:
   PROJECT_NAME: Chrison.Extensions
   PROJECT_FILE: Chrison.Extensions.csproj
   RELEASE_NAME: Chrison.Extensions
+  RELEASE_CONFIG: Release
+  IS_PUBLIC_RELEASE: ${{ github.ref == 'refs/heads/main' }} # needs to be adjusted once we set up proper branching strategy
   
 jobs:
   publish:
@@ -39,18 +41,23 @@ jobs:
       with:        
         path: ${{ env.PROJECT_NAME }}
         
+    - name: Install dependencies
+      run: dotnet restore
+  
+    - name: Build
+      run: dotnet build -c ${{ env.RELEASE_CONFIG }} --no-restore /p:PublicRelease=${{ env.IS_PUBLIC_RELEASE }}
+  
     - name: Package
-      run: dotnet pack -c Release -o . '${{ env.PROJECT_NAME }}/${{ env.PROJECT_FILE }}'
+      run: dotnet pack -c ${{ env.RELEASE_CONFIG }} -o . '${{ env.PROJECT_NAME }}/${{ env.PROJECT_FILE }}' /p:PublicRelease=${{ env.IS_PUBLIC_RELEASE }}
       
     - name: Publish on NuGet
-      run: dotnet nuget push *.nupkg -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json  
+      run: dotnet nuget push *.nupkg -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json
       
     - name: Create release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+      uses: softprops/action-gh-release@v2
       with:
+          name: ${{ env.RELEASE_NAME }} ${{ steps.nbgv.outputs.NuGetPackageVersion }}
           tag_name: v${{ steps.nbgv.outputs.NuGetPackageVersion }}
-          release_name: ${{ env.RELEASE_NAME }} ${{ steps.nbgv.outputs.NuGetPackageVersion }}
+          make_latest: ${{ env.IS_PUBLIC_RELEASE }} # If public release, then make latest
           draft: false
-          prerelease: false
+          prerelease: ${{ !env.IS_PUBLIC_RELEASE }} # If not public release, then prerelease
