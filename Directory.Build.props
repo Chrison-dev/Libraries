@@ -1,8 +1,14 @@
 <Project>
-	<PropertyGroup Label="Project Defaults">
-		<TargetFramework>net9.0</TargetFramework>
-		<ImplicitUsings>enable</ImplicitUsings>
-		<Nullable>enable</Nullable>
-		<RootNamespace>Chrison</RootNamespace>
-	</PropertyGroup>
+  <PropertyGroup Label="Project Defaults">
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>Chrison</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Nerdbank.GitVersioning" Condition="!Exists('packages.config')">
+      <PrivateAssets>all</PrivateAssets>
+      <Version>3.7.115</Version>
+    </PackageReference>
+  </ItemGroup>
 </Project>
